@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "microscope",
+      "runtimeExecutable": "./.venv/bin/python",
+      "runtimeArgs": ["-m", "gradlab.inspection.cli", "serve", "--port", "8371", "--no-browser", "--allow-expressions"],
+      "port": 8371
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "environment": {
+    "timestamp_utc": "2026-10-22T20:49:30+00:00",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "machine": "arm64",
+    "python": "3.12.13",
+    "numpy": "2.5.4",
+    "gradlab": "0.1.0",
+    "torch": "2.14.1",
+    "blas": "accelerate unknown"
+  },
+  "config": {
+    "repeats": 25,
+    "warmup": 5,
+    "quick": false
+  },
+  "elementwise": [
+    {
+      "size": 100,
+      "numpy_s": 1.0839994502021e-06,
+      "gradlab_forward_s": 9.291999958804809e-06,
+      "overhead_s": 8.208000508602709e-06,
+      "overhead_ratio": 8.571960029197815,
+      "iqr_s": 4.5900014811195433e-07,
+      "torch_forward_s": 4.542000169749372e-06
+    },
+    {
+      "size": 1000,
+      "numpy_s": 1.6249996406259015e-06,
+      "gradlab_forward_s": 1.0166999345528893e-05,
+      "overhead_s": 8.541999704902992e-06,
+      "overhead_ratio": 6.256616365535236,
+      "iqr_s": 2.9099828680045903e-07,
+      "torch_forward_s": 4.999999873689376e-06
+    },
+    {
+      "size": 10000,
+      "numpy_s": 9.999999747378752e-06,
+      "gradlab_forward_s": 1.95419997908175e-05,
+      "overhead_s": 9.542000043438748e-06,
+      "overhead_ratio": 1.954200028448995,
+      "iqr_s": 2.9199873097240925e-07,
+      "torch_forward_s": 1.3374999980442226e-05
+    },
+    {
+      "size": 100000,
+      "numpy_s": 7.854199975554366e-05,
+      "gradlab_forward_s": 9.262499952455983e-05,
+      "overhead_s": 1.4082999769016169e-05,
+      "overhead_ratio": 1.1793053374353657,
+      "iqr_s": 7.090002327458933e-07,
+      "torch_forward_s": 8.583300041209441e-05
+    },
+    {
+      "size": 1000000,
+      "numpy_s": 0.0008424170009675436,
+      "gradlab_forward_s": 0.0008454170001641614,
+      "overhead_s": 2.999999196617864e-06,
+      "overhead_ratio": 1.003561180737298,
+      "iqr_s": 1.0458999895490706e-05,
+      "torch_forward_s": 0.0008874579998519039
+    }
+  ],
+  "matmul": [
+    {
+      "size": 16,
+      "numpy_matmul_s": 1.958000211743638e-06,
+      "gradlab_forward_s": 9.04199987417087e-06,
+      "gradlab_fwd_bwd_s": 4.7333500333479606e-05,
+      "overhead_s": 7.083999662427232e-06,
+      "gflops_numpy": 4.183860630283008,
+      "torch_fwd_bwd_s": 4.535400057648076e-05
+    },
+    {
+      "size": 64,
+      "numpy_matmul_s": 5.542000508285128e-06,
+      "gradlab_forward_s": 1.2665999747696333e-05,
+      "gradlab_fwd_bwd_s": 6.212500011315569e-05,
+      "overhead_s": 7.123999239411205e-06,
+      "gflops_numpy": 94.60266183956585,
+      "torch_fwd_bwd_s": 5.522899937204784e-05
+    },
+    {
+      "size": 128,
+      "numpy_matmul_s": 2.6499999876250513e-05,
+      "gradlab_forward_s": 3.0625000363215804e-05,
+      "gradlab_fwd_bwd_s": 0.0001262084997506463,
+      "overhead_s": 4.125000486965291e-06,
+      "gflops_numpy": 158.27562338062367,
+      "torch_fwd_bwd_s": 0.00011364550027792575
+    },
+    {
+      "size": 256,
+      "numpy_matmul_s": 0.00015312499999708962,
+      "gradlab_forward_s": 0.00015750000056868885,
+      "gradlab_fwd_bwd_s": 0.0005579170001510647,
+      "overhead_s": 4.37500057159923e-06,
+      "gflops_numpy": 219.13098449396085,
+      "torch_fwd_bwd_s": 0.0005269789999147179
+    },
+    {
+      "size": 512,
+      "numpy_matmul_s": 0.0012269170001673046,
+      "gradlab_forward_s": 0.0012381659998936811,
+      "gradlab_fwd_bwd_s": 0.004037479499857,
+      "overhead_s": 1.1248999726376496e-05,
+      "gflops_numpy": 218.7886026221787,
+      "torch_fwd_bwd_s": 0.003913395500603656
+    }
+  ],
+  "graph_depth": [
+    {
+      "depth": 10,
+      "build_s": 5.995799983793404e-05,
+      "build_plus_backward_s": 0.00013047899938101182,
+      "backward_s": 7.052099954307778e-05,
+      "us_per_node_build": 5.995799983793404,
+      "us_per_node_backward": 7.052099954307778
+    },
+    {
+      "depth": 100,
+      "build_s": 0.0006470410007750615,
+      "build_plus_backward_s": 0.0011545415000000503,
+      "backward_s": 0.0005075004992249887,
+      "us_per_node_build": 6.4704100077506155,
+      "us_per_node_backward": 5.075004992249887
+    },
+    {
+      "depth": 1000,
+      "build_s": 0.006753790999937337,
+      "build_plus_backward_s": 0.01180552049936523,
+      "backward_s": 0.005051729499427893,
+      "us_per_node_build": 6.753790999937337,
+      "us_per_node_backward": 5.051729499427893
+    },
+    {
+      "depth": 5000,
+      "build_s": 0.058097666000321624,
+      "build_plus_backward_s": 0.07335152049927274,
+      "backward_s": 0.015253854498951114,
+      "us_per_node_build": 11.619533200064325,
+      "us_per_node_backward": 3.0507708997902228
+    }
+  ],
+  "graph_memory": [
+    {
+      "depth": 10,
+      "bytes_held": 14264,
+      "bytes_per_node": 1426.4
+    },
+    {
+      "depth": 100,
+      "bytes_held": 151360,
+      "bytes_per_node": 1513.6
+    },
+    {
+      "depth": 1000,
+      "bytes_held": 1558992,
+      "bytes_per_node": 1558.992
+    },
+    {
+      "depth": 5000,
+      "bytes_held": 8002792,
+      "bytes_per_node": 1600.5584
+    }
+  ],
+  "training": [
+    {
+      "batch": 32,
+      "hidden": 16,
+      "params": 561,
+      "gradlab_step_s": 0.0003149580006720498,
+      "iqr_s": 6.3329989643534645e-06,
+      "torch_step_s": 0.0002804160012601642,
+      "ratio": 1.1231812708856022
+    },
+    {
+      "batch": 32,
+      "hidden": 64,
+      "params": 5313,
+      "gradlab_step_s": 0.00038454199966508895,
+      "iqr_s": 7.665999874006957e-06,
+      "torch_step_s": 0.0003509580001264112,
+      "ratio": 1.095692360700087
+    },
+    {
+      "batch": 256,
+      "hidden": 64,
+      "params": 5313,
+      "gradlab_step_s": 0.0006657499998254934,
+      "iqr_s": 9.958999726222828e-06,
+      "torch_step_s": 0.0007585000003018649,
+      "ratio": 0.877719182017852
+    },
+    {
+      "batch": 256,
+      "hidden": 256,
+      "params": 70401,
+      "gradlab_step_s": 0.0021987079999234993,
+      "iqr_s": 1.4375000318977982e-05,
+      "torch_step_s": 0.002612500000395812,
+      "ratio": 0.8416107175465568
+    }
+  ]
+}

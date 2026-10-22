@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gradient Microscope — GradLab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">&#8706;</span>
+    <div>
+      <h1>Gradient Microscope</h1>
+      <p class="sub">Every number on this page was computed by GradLab's engine.</p>
+    </div>
+  </div>
+  <div class="topbar-controls">
+    <label class="mode-toggle">
+      <input type="checkbox" id="technical-mode">
+      <span>Technical explanations</span>
+    </label>
+    <span id="version-badge" class="badge"></span>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Traces">
+    <div class="sidebar-section">
+      <h2>Traces</h2>
+      <ul id="trace-list" class="trace-list"></ul>
+    </div>
+    <div class="sidebar-section" id="custom-panel" hidden>
+      <h2>Your own expression</h2>
+      <form id="custom-form">
+        <input type="text" id="custom-input" placeholder="x^2 + 2*x" autocomplete="off" spellcheck="false">
+        <input type="text" id="custom-values" placeholder="x=3" autocomplete="off" spellcheck="false">
+        <button type="submit">Differentiate</button>
+      </form>
+      <p class="hint" id="custom-hint"></p>
+    </div>
+    <div class="sidebar-section footnote">
+      <p>Loaded from static JSON traces produced by
+      <code>gradlab-microscope generate</code>. No graph here is hand-drawn.</p>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div id="empty-state" class="empty-state">
+      <h2>No traces found</h2>
+      <p>Run <code>gradlab-microscope generate</code> to execute the presets and write
+      their traces, then reload. This page deliberately ships with no example data:
+      an illustration of a computation graph would not be a computation graph.</p>
+    </div>
+
+    <section id="trace-view" hidden>
+      <div class="trace-header">
+        <h2 id="trace-title"></h2>
+        <p id="trace-expression" class="expression"></p>
+        <p id="trace-note" class="note"></p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab" data-view="graph" role="tab">A · Graph</button>
+        <button class="tab" data-view="forward" role="tab">B · Forward</button>
+        <button class="tab" data-view="backward" role="tab">C · Backward</button>
+        <button class="tab" data-view="params" role="tab">D · Updates</button>
+        <button class="tab" data-view="dynamics" role="tab">E · Dynamics</button>
+      </div>
+
+      <!-- View A: the graph -->
+      <div class="view" id="view-graph">
+        <div class="graph-wrap">
+          <svg id="graph-svg" role="img" aria-label="Computation graph"></svg>
+        </div>
+        <aside class="inspector" id="graph-inspector">
+          <p class="placeholder">Select a node to inspect it.</p>
+        </aside>
+      </div>
+
+      <!-- View B: forward -->
+      <div class="view" id="view-forward" hidden>
+        <div class="stepper" id="forward-stepper"></div>
+        <div class="step-layout">
+          <div class="step-detail" id="forward-detail"></div>
+          <div class="graph-wrap"><svg id="forward-svg" role="img"
+            aria-label="Computation graph, current forward step highlighted"></svg></div>
+        </div>
+      </div>
+
+      <!-- View C: backward -->
+      <div class="view" id="view-backward" hidden>
+        <div class="stepper" id="backward-stepper"></div>
+        <div class="step-layout">
+          <div class="step-detail" id="backward-detail"></div>
+          <div class="graph-wrap"><svg id="backward-svg" role="img"
+            aria-label="Computation graph, gradient flow for the current step"></svg></div>
+        </div>
+      </div>
+
+      <!-- View D: parameter updates -->
+      <div class="view" id="view-params" hidden>
+        <div id="params-detail"></div>
+      </div>
+
+      <!-- View E: training dynamics -->
+      <div class="view" id="view-dynamics" hidden>
+        <div id="dynamics-detail"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

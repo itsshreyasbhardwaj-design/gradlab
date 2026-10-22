@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+.DS_Store
+examples/_out/
+benchmarks/_out/
+apps/microscope/traces/*.json
+!apps/microscope/traces/.gitkeep
+# Scoped deliberately: a bare 'data/' rule also matches src/gradlab/data/ and
+# silently excludes it from the built wheel.
+examples/_data/
