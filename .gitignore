@@ -18,3 +18,4 @@ apps/microscope/traces/*.json
 # Scoped deliberately: a bare 'data/' rule also matches src/gradlab/data/ and
 # silently excludes it from the built wheel.
 examples/_data/
+.hypothesis/
