@@ -85,7 +85,7 @@ def train_test_split(
     indices = np.arange(n)
     if shuffle:
         np.random.default_rng(seed).shuffle(indices)
-    cut = int(round(n * (1.0 - test_size)))
+    cut = round(n * (1.0 - test_size))
     if cut == 0 or cut == n:
         raise ValueError(
             f"test_size={test_size} on {n} samples leaves one side empty. Use more "

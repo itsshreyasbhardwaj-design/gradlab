@@ -96,7 +96,8 @@ def download_split(directory: Path | str, split: str, timeout: float = 60.0) -> 
     target = local_path(directory, split)
     target.parent.mkdir(parents=True, exist_ok=True)
     url = f"{BASE_URL}/{FILES[split]}"
-    with urllib.request.urlopen(url, timeout=timeout) as response:  # noqa: S310 - fixed https URL
+    # The URL is a module-level constant over https; it is never built from input.
+    with urllib.request.urlopen(url, timeout=timeout) as response:
         payload = response.read()
     parse_optdigits(payload.decode("utf-8"))  # validate before writing anything
     target.write_bytes(payload)

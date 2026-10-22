@@ -42,7 +42,9 @@ def make_regression(
     )
 
 
-def make_xor(n_samples: int = 200, noise: float = 0.0, seed: int | None = None) -> tuple[Tensor, Tensor]:
+def make_xor(
+    n_samples: int = 200, noise: float = 0.0, seed: int | None = None
+) -> tuple[Tensor, Tensor]:
     """The XOR problem: label is 1 when exactly one coordinate is positive.
 
     With ``noise=0`` and ``n_samples=4`` this is the classic four-point truth
@@ -68,7 +70,9 @@ def make_xor(n_samples: int = 200, noise: float = 0.0, seed: int | None = None) 
     )
 
 
-def make_moons(n_samples: int = 200, noise: float = 0.1, seed: int | None = None) -> tuple[Tensor, Tensor]:
+def make_moons(
+    n_samples: int = 200, noise: float = 0.1, seed: int | None = None
+) -> tuple[Tensor, Tensor]:
     """Two interleaving half-circles — a nonlinearly separable binary problem.
 
     Construction (the standard one, implemented here directly): class 0 is the
@@ -123,7 +127,9 @@ def make_blobs(
     )
 
 
-def make_spiral(n_samples: int = 300, classes: int = 3, noise: float = 0.2, seed: int | None = None):
+def make_spiral(
+    n_samples: int = 300, classes: int = 3, noise: float = 0.2, seed: int | None = None
+):
     """Interleaved spiral arms — harder than two-moons, still 2-D and plottable."""
     rng = default_rng(seed)
     per_class = n_samples // classes
