@@ -212,12 +212,16 @@ Beyond numerics, `tests/unit/test_architecture.py` enforces:
 | doctests | 12 | every documented example actually runs |
 | **total** | **506** | **84% line coverage** |
 
-`pytest -q` takes roughly a minute — median 71 s over four runs on the
-reference machine, ranging 58–88 s with background load. The cost is
-concentrated in a handful of tests that genuinely train models: the SGD
-optimiser-parity trajectory (~11 s), and the XOR claims in
-`test_documented_claims.py` (~6 s), which train two 400-epoch networks to show
-that an affine model cannot solve it.
+`pytest -q` runtime is **highly variable with machine load**: 12 runs on the
+reference machine spanned 19 s to 112 s (median 59 s, a 6x spread) with no
+change to the code. Quote it as "under two minutes" rather than a precise
+figure. On GitHub's runners the whole test job — dependency install included —
+takes 87-98 s across Python 3.11, 3.12 and 3.13.
+
+The cost is concentrated in a handful of tests that genuinely train models: the
+SGD optimiser-parity trajectory (~11 s), and the XOR claim in
+`test_documented_claims.py` (~6 s), which trains two 400-epoch networks to
+demonstrate that an affine model cannot solve it.
 
 ## What is *not* established
 

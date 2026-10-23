@@ -300,7 +300,7 @@ round-tripping, and that an SGD step always moves every component downhill.
 **Documentation claims.** 11 further tests recompute the figures quoted in the
 docs and fail if the engine and the prose disagree.
 
-**Totals:** 506 tests, 84% line coverage, about a minute on the reference machine (median 71 s over four runs, range 58–88 s).
+**Totals:** 506 tests, 84% line coverage. Wall-clock runtime varies several-fold with machine load (19-112 s across 12 runs locally; 87-98 s per job on GitHub's runners including dependency installation).
 
 ### 10.1 A multiclass result on real data
 
