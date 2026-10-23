@@ -3,7 +3,10 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "gradlab"
+# The PyPI distribution name is "gradlab-ml" because "gradlab" was already
+# taken by an unrelated reinforcement-learning project. The *import* name is
+# unaffected and remains `gradlab` — see [tool.hatch.build.targets.wheel] below.
+name = "gradlab-ml"
 version = "0.1.0"
 description = "An educational machine learning framework with a from-scratch reverse-mode autodiff engine."
 readme = "README.md"

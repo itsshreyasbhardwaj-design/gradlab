@@ -48,6 +48,18 @@ backward pass happen instead of inferring it.
 Requires Python 3.11+. The only runtime dependency is NumPy.
 
 ```bash
+pip install gradlab-ml             # then: import gradlab
+```
+
+> **The PyPI name is `gradlab-ml`, the import name is `gradlab`.** They differ
+> because `gradlab` was already taken on PyPI by an unrelated
+> reinforcement-learning project. If you have that package installed too, the
+> two will clash on `import gradlab`; they are unrelated and not intended to be
+> used together.
+
+To work on it instead:
+
+```bash
 git clone https://github.com/itsshreyasbhardwaj-design/gradlab
 cd gradlab
 python -m venv .venv && source .venv/bin/activate

@@ -15,6 +15,9 @@ Nothing yet.
 
 First release. Everything below is new.
 
+> Published on PyPI as **`gradlab-ml`** (the name `gradlab` was already taken by
+> an unrelated project). The import name is `gradlab`.
+
 ### Core
 
 * `Tensor` over NumPy storage: `data`, `shape`, `ndim`, `size`, `dtype`,
