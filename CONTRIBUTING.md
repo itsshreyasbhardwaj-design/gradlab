@@ -8,7 +8,7 @@ works" but "a reader can see why it is correct".
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,oracle]"
-pytest -q          # 506 tests, ~21s
+pytest -q          # 506 tests, ~1 min
 ```
 
 Python 3.11+ is required. If your system Python is older, use

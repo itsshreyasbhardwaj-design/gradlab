@@ -61,7 +61,7 @@ pip install -e ".[dev]"            # add ",oracle" for the PyTorch comparison te
 Verify:
 
 ```bash
-pytest -q                          # 506 tests, ~21s
+pytest -q                          # 506 tests, ~1 min
 python examples/scalar_autograd.py
 ```
 
@@ -224,7 +224,7 @@ Plus 11 tests that recompute the numbers quoted in the documentation, so a stale
 figure fails CI.
 
 ```
-506 tests · 84% line coverage · ruff clean · mypy clean · ~21 seconds
+506 tests · 84% line coverage · ruff clean · mypy clean · ~1 min
 ```
 
 Full measured error table: [docs/validation.md](docs/validation.md).

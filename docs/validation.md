@@ -212,7 +212,12 @@ Beyond numerics, `tests/unit/test_architecture.py` enforces:
 | doctests | 12 | every documented example actually runs |
 | **total** | **506** | **84% line coverage** |
 
-`pytest -q` runs everything in about 21 seconds.
+`pytest -q` takes roughly a minute — median 71 s over four runs on the
+reference machine, ranging 58–88 s with background load. The cost is
+concentrated in a handful of tests that genuinely train models: the SGD
+optimiser-parity trajectory (~11 s), and the XOR claims in
+`test_documented_claims.py` (~6 s), which train two 400-epoch networks to show
+that an affine model cannot solve it.
 
 ## What is *not* established
 
