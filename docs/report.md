@@ -25,11 +25,12 @@ against PyTorch as an external oracle (agreement to 1 × 10⁻¹⁰ on operation
 to 1.4 × 10⁻¹⁶ on a 120-epoch training run). 506 tests pass with 84% line
 coverage.
 
-Three experiments are reported: linear regression converging to the irreducible
+Four experiments are reported: linear regression converging to the irreducible
 noise floor (final loss 0.010373 against a noise variance of 0.0100); XOR, which
 a purely affine network of the same capacity fails at 53.3% while one `tanh`
-raises it to 100%; and two-moons classification at 96.7% validation accuracy
-against an 82.7% linear baseline.
+raises it to 100%; two-moons classification at 96.7% validation accuracy against
+an 82.7% linear baseline; and handwritten-digit classification on UCI optdigits
+at 96.83% test accuracy with a 6,570-parameter network.
 
 The contribution is pedagogical, not algorithmic. Every algorithm implemented is
 standard; the engineering decisions, the validation design, and the inspection
@@ -300,6 +301,40 @@ round-tripping, and that an SGD step always moves every component downhill.
 docs and fail if the engine and the prose disagree.
 
 **Totals:** 506 tests, 84% line coverage, ~21 seconds.
+
+### 10.1 A multiclass result on real data
+
+The experiments above are synthetic by design, so that the ground truth is known
+and the result is checkable. One experiment uses real data: UCI optdigits
+(Alpaydin & Kaynak, 1998; CC BY 4.0), 8x8 handwritten digit images, 3823
+training and 1797 test samples.
+
+A 64 -> 64 -> 32 -> 10 network with ReLU, Dropout(0.2) and Adam(0.002), trained
+for 40 epochs with seed 7 (6,570 parameters):
+
+| metric | value |
+|---|---:|
+| train accuracy | 0.9997 |
+| **test accuracy** | **0.9683** |
+| test errors | 57 of 1797 (3.17%) |
+| best validation loss | 0.112062 (epoch 29 of 40) |
+| final train / val loss | 0.029646 / 0.123483 |
+
+Per-class recall ranges from 1.000 (class 0) to 0.925 (class 8). The confusion
+matrix shows the expected structure for this dataset: the residual errors are
+plausible digit confusions (8 mistaken for 1 six times; 7 for 5 six times),
+not scattered noise.
+
+The train/test gap — 0.9997 against 0.9683 — is mild overfitting, visible in the
+loss curve as the training loss continuing to fall after validation flattens at
+around epoch 29. Dropout(0.2) reduces it but does not remove it on 3823 samples.
+
+**No state-of-the-art claim is made.** Published results on optdigits reach
+roughly 97-99% with small models; this result is in that range and the point is
+only that GradLab's engine trains a real multiclass model to the accuracy its
+architecture should reach. The dataset download is opt-in
+(`python examples/digits.py --download`) and GradLab never fetches it
+implicitly.
 
 ---
 

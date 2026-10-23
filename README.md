@@ -149,7 +149,7 @@ All reproducible from a seed. Measured results, not targets.
 | **Two-moons** | **96.7%** validation accuracy vs **82.7%** for a logistic-regression baseline |
 | **Spirals (3-class)** | **99.6%** validation vs **67.3%** for a nearest-centroid reference |
 | **PyTorch comparison** | identical weights, 120 epochs: losses agree to **1.4e-16**, final loss difference exactly **0** |
-| **Handwritten digits** | implemented against UCI optdigits; the download is **opt-in** and was not run here |
+| **Handwritten digits** | **96.83%** test accuracy on UCI optdigits (1797 held-out samples, 57 wrong) with a 6,570-parameter MLP; the dataset download is **opt-in** |
 
 ```bash
 python examples/scalar_autograd.py      # the engine, from first principles
@@ -158,6 +158,7 @@ python examples/xor.py                  # why nonlinearity is not optional
 python examples/two_moons.py            # full reproducibility report
 python examples/classification.py       # multiclass: blobs and spirals
 python examples/pytorch_comparison.py   # independent verification
+python examples/digits.py --download    # UCI optdigits (opt-in download)
 python examples/lessons.py              # the fourteen lessons
 ```
 

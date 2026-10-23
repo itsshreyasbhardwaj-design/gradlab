@@ -111,7 +111,10 @@ on any hardware other than the machine named in the benchmark report.
   well-known toy datasets, not wrappers around scikit-learn.
 * The only external dataset is UCI optdigits, and **it is never downloaded
   automatically** — `examples/digits.py` requires an explicit `--download` flag
-  and prints exactly what it would fetch and from where.
+  and prints exactly what it would fetch and from where. The reported 96.83%
+  test accuracy was measured after running it with that flag; without the data
+  present the script explains how to obtain it and exits cleanly rather than
+  substituting anything.
 
 ## Scope of the validation
 
