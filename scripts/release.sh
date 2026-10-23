@@ -50,8 +50,18 @@ cat <<EOF
     A PyPI version number can never be reused, even after deletion.
     Dry run first if you want:  $PY -m twine upload --repository testpypi dist/*
 
-Press Enter to upload to PyPI, or Ctrl-C to stop.
 EOF
+
+# Require a real terminal. Without this, a piped or redirected stdin makes
+# `read` return instantly and the upload would proceed unattended — on an
+# operation whose version number can never be reused.
+if [ ! -t 0 ]; then
+  echo "Refusing to upload: stdin is not a terminal."
+  echo "Run this directly from a shell, not piped or in CI."
+  exit 1
+fi
+
+printf 'Press Enter to upload to PyPI, or Ctrl-C to stop. '
 read -r
 $PY -m twine upload dist/*
 echo "==> done: https://pypi.org/project/gradlab-ml/$VERSION/"
